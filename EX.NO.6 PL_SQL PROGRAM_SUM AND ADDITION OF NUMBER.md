@@ -11,7 +11,7 @@
 
 ### Program:
 ```
-NAME: Barath S
+DEVELOPED BY: Barath S
 REG NO: 212222230018
 ```
 
