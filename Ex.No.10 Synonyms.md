@@ -19,7 +19,7 @@ A SYNONYM provides another name for database object, referred to as original obj
 
 ### SQL QUERY: 
 ```
-NAME: Barath S
+DEVELOPED BY: Barath S
 REG NO: 212222230018
 ```
 
