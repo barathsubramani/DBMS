@@ -2,7 +2,10 @@
 ### DATE:
 ## AIM:
 To create a manager database and execute DML queries using SQL.
-
+```
+DEVELOPED BY: Barath S
+REG NO: 212222230018
+```
 # THEORY
 ## Data Control Language (DCL) commands
 * Data control language (DCL) is used to access the stored data.
