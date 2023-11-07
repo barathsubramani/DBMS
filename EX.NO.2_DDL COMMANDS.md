@@ -94,6 +94,6 @@ rename to mystudent;
 
 
 ## Result:
-         Thus the basic DDL commands in SQL are executed. 
+Thus the basic DDL commands in SQL are executed. 
 
 
