@@ -22,12 +22,13 @@ REG NO: 212222230018
 ### Q1) Create a table employee with employee id ,name and Address
 
 ### QUERY:
-sql
+``sql
 create table employee(
 emp_id numeric,
 emp_name varchar(10),
 addr varchar(40)
 );
+``
 
 
 
@@ -41,11 +42,11 @@ addr varchar(40)
 
 
 ### QUERY:
-sql
+```sql
 insert into employee values(1,'Luffy','EastBlue');
 insert into employee values(2,'Shanks','GodValley');
 insert into employee values(3,'Grap','MarinFord');
-
+```
 
 ### OUTPUT:
 ![image](https://github.com/Lakshmipriya2005/DBMS/assets/115525361/db081e71-759d-44df-b847-75294a2e2a34)
@@ -54,9 +55,9 @@ insert into employee values(3,'Grap','MarinFord');
 ### Q3) Start the transaction and create a save point A.
 
 ### QUERY:
-sql
+```sql
 savepoint A;
-
+```
 
 ### OUTPUT:
 ![image](https://github.com/Lakshmipriya2005/DBMS/assets/115525361/d491985f-d652-4510-baba-69bda39920c4)
@@ -65,9 +66,9 @@ savepoint A;
 ### Q4) Perform insertion into employee table.
 
 ### QUERY:
-sql
+```sql
 insert into employee(4,'Robin','EniesLobby');
-
+```
 
 ### OUTPUT:
 ![image](https://github.com/Lakshmipriya2005/DBMS/assets/115525361/b9d81949-f840-4fb4-8427-6c5efb79da74)
@@ -78,10 +79,10 @@ insert into employee(4,'Robin','EniesLobby');
 
 
 ### QUERY:
-sql
+```sql
 select * from employee;
 savepoint s2;
-
+```
 
 ### OUTPUT:
 ![image](https://github.com/Lakshmipriya2005/DBMS/assets/115525361/bc86bb69-d7ad-4193-aeda-050214882984)
@@ -92,9 +93,9 @@ savepoint s2;
 
 
 ### QUERY:
-sql
+```sql
 update employee set emp_name='Nico Robin' where emp_id=4;
-
+```
 
 ### OUTPUT:
 ![image](https://github.com/Lakshmipriya2005/DBMS/assets/115525361/2e9e6855-56ea-40f4-ba36-56f8eafd68ee)
@@ -105,10 +106,10 @@ update employee set emp_name='Nico Robin' where emp_id=4;
 
 
 ### QUERY:
-sql
+```sql
 select * from employee;
 rollback to s2;
-
+```
 
 ### OUTPUT:
 ![image](https://github.com/Lakshmipriya2005/DBMS/assets/115525361/b66b2852-7cbc-49e6-a059-579485f3ff49)
@@ -118,10 +119,10 @@ rollback to s2;
 
 
 ### QUERY:
-sql
+```sql
 select * from employee;
 commit;
-
+```
 
 ### OUTPUT:
 ![image](https://github.com/Lakshmipriya2005/DBMS/assets/115525361/7dd55645-f515-4c5b-9174-1b3a9bc24e30)
@@ -132,9 +133,9 @@ commit;
 
 
 ### QUERY:
-sql
+```sql
 rollback to A;
-
+```
 
 ### OUTPUT:
 ![image](https://github.com/Lakshmipriya2005/DBMS/assets/115525361/441afff5-9f95-418b-ad8b-c2b5cfbf810d)
