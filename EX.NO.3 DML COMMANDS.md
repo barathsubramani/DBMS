@@ -14,11 +14,14 @@ To create a manager database and execute DML queries using SQL.
 4. SELECT: The SELECT command shows the records of the specified table.
 
 ## Create the table as given below:
-```sql
+```python
+sql
 create table manager(enumber number(6),ename char(15),salary number(5),commission number(4),annualsalary number(7),Hiredate date,designation char(10),deptno number(2),reporting char(10));
 ```
+
 ## insert the following values into the table
-```sql
+```python
+sql
 insert into manager values(7369,'Dharsan',2500,500,30000,'30-June-81','clerk',10,'John');
 insert into manager values(7839,'Subu',3000,400,36000,'1-Jul-82','manager',null,'James');
 insert into manager values(7934,'Aadhi',3500,300,42000,'1-May-82','manager',30,NULL);
@@ -28,180 +31,188 @@ insert into manager values(7788,'Vikash',4000,0,48000,'12-Aug-82','clerk',50,'Bo
 ### Q1) Update all the records of manager table by increasing 10% of their salary as bonus.
 
 ### QUERY:
-```sql
+```python
 update manager set salary=salary+(salary*0.10);
 ```
 
-
 ### OUTPUT:
-![model](p1.png)
+![1](https://github.com/Leann4468/DBMS/assets/121165979/981b813f-7e6a-4983-a9e6-71e5b36c4659)
+
 
 ### Q2) Delete the records from manager table where the salary less than 2750.
 
-
 ### QUERY:
-```sql
+```python
 delete from manager where salary<2750;
 ```
 
-
 ### OUTPUT:
-![model](p2.png)
+![2](https://github.com/Leann4468/DBMS/assets/121165979/b7d5be38-dcea-4d0b-9321-63c5ef745471)
+
 
 ### Q3) Display each name of the employee as “Name” and annual salary as “Annual Salary” (Note: Salary in emp table is the monthly salary)
 
 
 ### QUERY:
-```sql
+```python
 select ename as "Name",salary*12 as "Annual salary" from manager;
 ```
 
-
-
 ### OUTPUT:
-![model](p3.png)
+![3](https://github.com/Leann4468/DBMS/assets/121165979/85d54b25-c890-47b5-894d-f2f48baf94f8)
 
-### Q5)	List the names of Clerks from emp table.
+
+### Q4)	List the names of Clerks from emp table.
 
 
 ### QUERY:
-```sql
+```python
 select ename from manager where designation='clerk';
 ```
 
-
-
 ### OUTPUT:
-![model](p4.png)
+![4](https://github.com/Leann4468/DBMS/assets/121165979/6ec71fdf-9635-46a6-8140-d5574991f811)
 
-### Q6)	List the names of employee who are not Managers.
+
+### Q5)	List the names of employee who are not Managers.
 
 
 ### QUERY:
-```sql
+```python
 select ename from manager where designation <> 'manager';
 ```
 
-
-
 ### OUTPUT:
-![model](p5.png)
+![5](https://github.com/Leann4468/DBMS/assets/121165979/b680be1c-701d-4461-ae2c-00cf9aa82277)
 
 
-### Q7)	List the names of employees not eligible for commission.
-
+### Q6)	List the names of employees not eligible for commission.
 
 ### QUERY:
-```sql
+```python
 select ename from manager where commission=0;
 ```
 
-
 ### OUTPUT:
-![model](p6.png)
+![6](https://github.com/Leann4468/DBMS/assets/121165979/92b81a0e-baa0-4046-a727-4cc8417ca281)
 
 
-### Q8)	List employees whose name either start or end with ‘s’.
+### Q7)	List employees whose name either start or end with ‘s’.
 
 
 ### QUERY:
-```sql
+```python
 select ename from manager where ename like '%s' or ename like 's%';
 ```
 
-
 ### OUTPUT:
-![model](p7.png)
+![7](https://github.com/Leann4468/DBMS/assets/121165979/7d48cbb5-719f-4e8f-8ef2-dce76dff05e5)
 
 
-### Q9) Sort emp table in ascending order by hire-date and list ename, job, deptno and hire-date.
+### Q8) Sort emp table in ascending order by hire-date and list ename, job, deptno and hire-date.
 
 
 ### QUERY:
-```sql
+```python
 select ename,designation as "job",deptno,hiredate from manager order by hiredate asc;
 ```
 
-
 ### OUTPUT:
-![model](p8.png)
+![image](https://github.com/Lakshmipriya2005/DBMS/assets/115525361/a8577692-48a8-4055-a52d-3086cdffc049)
 
 
-### Q10) List the Details of Employees who have joined before 30 Sept 81.
+
+### Q9) List the Details of Employees who have joined before 30 Sept 81.
 
 
 ### QUERY:
-```sql
+```python
 select * from manager where hiredate<to_date('1981-09-30','YYYY-MM-DD');
+
 ```
-
-
 ### OUTPUT:
-![model](p9.png)
+![ep 2,9](https://github.com/Lakshmipriya2005/DBMS/assets/115525361/61003160-09e2-43df-b038-ecfa34759b1b)
 
-### Q11)	List ename, deptno and sal after sorting emp table in ascending order by deptno and then descending order by sal.
+
+
+### Q10)	List ename, deptno and sal after sorting emp table in ascending order by deptno and then descending order by sal.
 
 
 ### QUERY:
-```sql
+```python
  select ename,deptno,salary from manager order by deptno asc,salary desc;
 ```
 
-
-
 ### OUTPUT:
-![model](p10.png)
+![image](https://github.com/Lakshmipriya2005/DBMS/assets/115525361/738a43ae-2dd7-45fb-8590-c7fe01d3de80)
 
-### Q12) List the names of employees not belonging to dept no 30,40 & 10
+
+
+### Q11) List the names of employees not belonging to dept no 30,40 & 10
 
 
 ### QUERY:
-```sql
+```python
 select ename from manager where deptno not in (30,40,10);
 ```
 
-
 ### OUTPUT:
-![model](p11.png)
+![image](https://github.com/Lakshmipriya2005/DBMS/assets/115525361/76ab0b21-72c4-4bb2-b408-dcc9268e77a9)
 
-### Q13) Find number of rows in the table EMP
+
+### Q12) Find number of rows in the table EMP
 
 ### QUERY:
-```sql
+```python
  select count(*) from manager;
 ```
 
-
 ### OUTPUT:
-![model](p12.png)
+![image](https://github.com/Lakshmipriya2005/DBMS/assets/115525361/950074c7-3de5-4bee-b52f-37b74ec248a5)
 
-### Q14) Find maximum, minimum and average salary in EMP table.
+
+
+### Q13) Find maximum, minimum and average salary in EMP table.
 
 ### QUERY:
-```sql
+
+### MAXIMUM:
+```python
 select max(salary) from manager;
+```
+
+### OUTPUT:
+![image](https://github.com/Lakshmipriya2005/DBMS/assets/115525361/38c9860d-e20b-4376-a18a-85b89df53449)
+
+
+### MINIMUM:
+```python
 select min(salary) from manager;
+```
+
+### OUTPUT:
+![image](https://github.com/Lakshmipriya2005/DBMS/assets/115525361/621720b9-d2e7-433c-a21a-290fdec58ceb)
+
+
+### AVERAGE:
+```python
 select avg(salary) from manager;
 ```
 
-
 ### OUTPUT:
-![model](p13.png)
-![model](p14.png)
-![model](p15.png)
+![image](https://github.com/Lakshmipriya2005/DBMS/assets/115525361/7d8b3058-82fa-444d-9aa6-288927ea5ce2)
+95f73030c)
 
-
-### Q15) List the jobs and number of employees in each job. The result should be in the descending order of the number of employees.
+### Q14) List the jobs and number of employees in each job. The result should be in the descending order of the number of employees.
 
 ### QUERY:
-```sql
+```python
 SELECT designation AS job, COUNT(*) AS num_employees FROM manager GROUP BY designation ORDER BY num_employees DESC;
 ```
 
-
 ### OUTPUT:
-![model](p16.png)
+![image](https://github.com/Lakshmipriya2005/DBMS/assets/115525361/35815ab4-a2a2-44e2-8c60-615e41215701)
 
 
-## RESULT :
-Thus the basic DML commands are executed.
+## Result:
+ To create a manager database and execute DML queries using SQL is executed successfully.
