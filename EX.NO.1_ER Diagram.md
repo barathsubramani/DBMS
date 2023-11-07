@@ -13,6 +13,10 @@
 5. Specify attributes unique, multivalued and composite attributes.
 
 ### ER Diagram 
+```
+DEVELOPED BY: Barath S
+REG NO: 212222230018
+```
 ![model](1.png)
 
 
