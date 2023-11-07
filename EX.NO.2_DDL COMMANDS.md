@@ -21,6 +21,10 @@ To create a student database and execute DDL queries using SQL.
 5. RENAME: This is used to rename an object existing in the database.
 
 ## Query:
+```
+DEVELOPED BY: Barath S
+REG MO: 212222230018
+```
 ### 1) Create a database studentdb
 
 ### SQL QUERY:
