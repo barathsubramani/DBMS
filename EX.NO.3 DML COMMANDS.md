@@ -13,6 +13,10 @@ To create a manager database and execute DML queries using SQL.
 3. DELETE: It is used to delete records from a database table.
 4. SELECT: The SELECT command shows the records of the specified table.
 
+```
+DEVELOPED BY: Barath S
+REG NO: 212222230018
+```
 ## Create the table as given below:
 ```python
 sql
