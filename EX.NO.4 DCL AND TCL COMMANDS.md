@@ -1,208 +1,167 @@
-# EX 5 SubQueries, Views and Joins 
+# EX.NO 4 Data Control Language (DCL) Commands and Transaction Control Languages (TCL) in SQL
+### DATE:
+## AIM:
+To create a manager database and execute DML queries using SQL.
 
+# THEORY
+## Data Control Language (DCL) commands
+* Data control language (DCL) is used to access the stored data.
+* It is mainly used for revoke and to grant the user the required access to a database.
+## List of DCL commands: 
+1. GRANT : It is used to insert data into a table.
+2. REVOKE: It is used to update existing data within a table.
+## Transaction control language(TCL) commands
+1. COMMIT : COMMIT command in SQL is used to save all the transaction-related changes permanently to the disk
+2. START TRANSACTION : to start the transaction
+3. ROLLBACK : undo the transaction upto savepoint 
+4. SAVEPOINT : create a savepoint to save the different parts of the same transaction using different names
 
-### AIM: 
-To use SubQueries, Views and Joins 
-
-## Create employee Table
-```
-Name: Barath S
-Reg no: 212222230018
-```
-```sql
-CREATE TABLE EMP (EMPNO NUMBER(4) PRIMARY KEY,ENAME VARCHAR2(10),JOB VARCHAR2(9),MGR NUMBER(4),HIREDATE DATE,SAL NUMBER(7,2),COMM NUMBER(7,2),DEPTNO NUMBER(2));
-```
-## Insert the values
-```sql
-INSERT INTO EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO)
-VALUES (7369, 'SMITH', 'CLERK', 7902, '17-DEC-80', 800, NULL, 20);
-
-INSERT INTO EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO)
-VALUES (7499, 'ALLEN', 'SALESMAN', 7698, '20-FEB-81', 1600, 300, 30);
-
-INSERT INTO EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO)
-VALUES (7521, 'WARD', 'SALESMAN', 7698, '22-FEB-81', 1250, 500, 30);
-
-INSERT INTO EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO)
-VALUES (7566, 'JONES', 'MANAGER', 7839, '02-APR-81', 2975, NULL, 20);
-
-INSERT INTO EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO)
-VALUES (7654, 'MARTIN', 'SALESMAN', 7698, '28-SEP-81', 1250, 1400, 30);
-
-INSERT INTO EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO)
-VALUES (7698, 'BLAKE', 'MANAGER', 7839, '01-MAY-81', 2850, NULL, 30);
-
-INSERT INTO EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO)
-VALUES (7782, 'CLARK', 'MANAGER', 7839, '09-JUN-81', 2450, NULL, 10);
-
-INSERT INTO EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO)
-VALUES (7788, 'SCOTT', 'ANALYST', 7566, '19-APR-87', 3000, NULL, 20);
-
-INSERT INTO EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO)
-VALUES (7839, 'KING', 'PRESIDENT', NULL, '17-NOV-81', 5000, NULL, 10);
-
-INSERT INTO EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO)
-VALUES (7844, 'TURNER', 'SALESMAN', 7698, '08-SEP-81', 1500, 0, 30);
-
-INSERT INTO EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO)
-VALUES (7876, 'ADAMS', 'CLERK', 7788, '23-MAY-87', 1100, NULL, 20);
-
-INSERT INTO EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO)
-VALUES (7900, 'JAMES', 'CLERK', 7698, '03-DEC-81', 950, NULL, 30);
-
-INSERT INTO EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO)
-VALUES (7902, 'FORD', 'ANALYST', 7566, TO_DATE('03-DEC-81', 'DD-MON-RR'), 3000, 20, 20);
-
-INSERT INTO EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO)
-VALUES (7934, 'MILLER', 'CLERK', 7782, TO_DATE('23-JAN-82', 'DD-MON-RR'), 1300, 10, 10);
-```
-
-## Create department table
-```sql
-CREATE TABLE DEPT (DEPTNO NUMBER(2) PRIMARY KEY,DNAME VARCHAR2(14),LOC VARCHAR2(13));
-```
-## Insert the values in the department table
-```sql
-INSERT INTO DEPT (DEPTNO, DNAME, LOC) VALUES (10, 'ACCOUNTING', 'NEW YORK');
-
-INSERT INTO DEPT (DEPTNO, DNAME, LOC) VALUES (20, 'RESEARCH', 'DALLAS');
-
-INSERT INTO DEPT (DEPTNO, DNAME, LOC) VALUES (30, 'SALES', 'CHICAGO');
-
-INSERT INTO DEPT (DEPTNO, DNAME, LOC) VALUES (40, 'OPERATIONS', 'BOSTON');
-```
-
-### Q1) List the name of the employees whose salary is greater than that of employee with empno 7566.
-
+### Q1) Create a table employee with employee id ,name and Address
 
 ### QUERY:
-![image](https://github.com/DhanushPalani/EX-3-SubQueries-Views-and-Joins/assets/121594640/1848b392-372d-4111-af2d-25daf5458864)
+sql
+create table employee(
+emp_id numeric,
+emp_name varchar(10),
+addr varchar(40)
+);
+
 
 
 ### OUTPUT:
-![image](https://github.com/DhanushPalani/EX-3-SubQueries-Views-and-Joins/assets/121594640/ee7dd795-bf87-4dff-aca9-b80307477ddd)
-
-### Q2) List the ename,job,sal of the employee who get minimum salary in the company.
-
-### QUERY:
-![image](https://github.com/DhanushPalani/EX-3-SubQueries-Views-and-Joins/assets/121594640/2c78d720-f077-4843-bbbd-cefb0e36afcf)
+![image](https://github.com/Lakshmipriya2005/DBMS/assets/115525361/56bbda44-a582-42e3-9738-5b1d035dd675)
 
 
-### OUTPUT:
-![image](https://github.com/DhanushPalani/EX-3-SubQueries-Views-and-Joins/assets/121594640/0ca9e7dc-c9b6-45c6-b7a0-bf123d815295)
 
-### Q3) List ename, job of the employees who work in deptno 10 and his/her job is any one of the job in the department ‘SALES’.
+### Q2) Insert three rows into emploee table 
 
-### QUERY:
-![image](https://github.com/DhanushPalani/EX-3-SubQueries-Views-and-Joins/assets/121594640/ea1201a0-53bc-436b-b815-3889759afcff)
-
-
-### OUTPUT:
-![image](https://github.com/DhanushPalani/EX-3-SubQueries-Views-and-Joins/assets/121594640/7376ae95-bab6-4739-abd7-bdc5e8a727dd)
-
-
-### Q4) Create a view empv5 (for the table emp) that contains empno, ename, job of the employees who work in dept 10.
-
-### QUERY:
-![image](https://github.com/DhanushPalani/EX-3-SubQueries-Views-and-Joins/assets/121594640/4c3e781f-8787-461d-b2ee-162f5222abd9)
-
-
-### OUTPUT:
-![image](https://github.com/DhanushPalani/EX-3-SubQueries-Views-and-Joins/assets/121594640/753d1db9-8955-4b97-b850-43622886968b)
-
-### Q5) Create a view with column aliases empv30 that contains empno, ename, sal of the employees who work in dept 30. Also display the contents of the view.
-
-### QUERY:
-
-![image](https://github.com/DhanushPalani/EX-3-SubQueries-Views-and-Joins/assets/121594640/3551ed65-3cb5-4846-b817-48436b507530)
-
-### OUTPUT:
-![image](https://github.com/DhanushPalani/EX-3-SubQueries-Views-and-Joins/assets/121594640/026712b5-02b2-40d6-a757-cec5bc08890d)
-
-### Q6) Update the view empv5 by increasing 10% salary of the employees who work as ‘CLERK’. Also confirm the modifications in emp table
-
-### QUERY:
-![image](https://github.com/DhanushPalani/EX-3-SubQueries-Views-and-Joins/assets/121594640/d83bbdcd-83a3-427e-bd2b-e799958b055d)
-
-
-### OUTPUT:
-![image](https://github.com/DhanushPalani/EX-3-SubQueries-Views-and-Joins/assets/121594640/6941b531-33ed-41dc-b6f4-9e8bcc0dd113)
-
-## Create a Customer1 Table
-```sql
-CREATE TABLE Customer1 (customer_id INT,cust_name VARCHAR(20),city VARCHAR(20),grade INT,salesman_id INT);
-```
-## Inserting Values to the Table
-```sql
-INSERT INTO Customer1 (customer_id, cust_name, city, grade, salesman_id) VALUES(3002, 'Nick Rimando', 'New York', 100, 5001);
-INSERT INTO Customer1 (customer_id, cust_name, city, grade, salesman_id) VALUES(3007, 'Brad Davis', 'New York', 200, 5001);
-INSERT INTO Customer1 (customer_id, cust_name, city, grade, salesman_id) VALUES(3005, 'Graham Zusi', 'California', 200, 5002);
-INSERT INTO Customer1 (customer_id, cust_name, city, grade, salesman_id) VALUES(3008, 'Julian Green', 'London', 300, 5002);
-INSERT INTO Customer1 (customer_id, cust_name, city, grade, salesman_id) VALUES(3004, 'Fabian Johnson', 'Paris', 300, 5006);
-INSERT INTO Customer1 (customer_id, cust_name, city, grade, salesman_id) VALUES(3009, 'Geoff Cameron', 'Berlin', 100, 5003);
-INSERT INTO Customer1 (customer_id, cust_name, city, grade, salesman_id) VALUES(3003, 'Jozy Altidor', 'Moscow', 200, 5007);
-INSERT INTO Customer1 (customer_id, cust_name, city, grade, salesman_id) VALUES(3001, 'Brad Guzan', 'London', NULL, 5005);
-```
-## Create a Salesperson1 table
-```sql
-CREATE TABLE Salesman1 (salesman_id INT,name VARCHAR(20),city VARCHAR(20),commission DECIMAL(4,2));
-```
-## Inserting Values to the Table
-```sql
-INSERT INTO Salesman1 (salesman_id, name, city, commission) VALUES(5001, 'James Hoog', 'New York', 0.15);
-INSERT INTO Salesman1 (salesman_id, name, city, commission) VALUES(5002, 'Nail Knite', 'Paris', 0.13);
-INSERT INTO Salesman1 (salesman_id, name, city, commission) VALUES(5005, 'Pit Alex', 'London', 0.11);
-INSERT INTO Salesman1 (salesman_id, name, city, commission) VALUES(5006, 'Mc Lyon', 'Paris', 0.14);
-INSERT INTO Salesman1 (salesman_id, name, city, commission) VALUES(5007, 'Paul Adam', 'Rome', 0.13);
-INSERT INTO Salesman1 (salesman_id, name, city, commission) VALUES(5003, 'Lauson Hen', 'San Jose', 0.12);
-```
-### Q7) Write a SQL query to find the salesperson and customer who reside in the same city. Return Salesman, cust_name and city.
-
-### QUERY:
-![image](https://github.com/DhanushPalani/EX-3-SubQueries-Views-and-Joins/assets/121594640/20c63405-1555-444c-8d92-daee8ad9f52d)
-
-
-### OUTPUT:
-![image](https://github.com/DhanushPalani/EX-3-SubQueries-Views-and-Joins/assets/121594640/4bf9b80e-b31d-486e-87b5-5462e60e6e2f)
-
-### Q8) Write a SQL query to find salespeople who received commissions of more than 13 percent from the company. Return Customer Name, customer city, Salesman, commission.
 
 
 ### QUERY:
-![image](https://github.com/DhanushPalani/EX-3-SubQueries-Views-and-Joins/assets/121594640/6b4b7f1a-e1fa-41eb-abfc-d544b005a00e)
+sql
+insert into employee values(1,'Luffy','EastBlue');
+insert into employee values(2,'Shanks','GodValley');
+insert into employee values(3,'Grap','MarinFord');
 
 
 ### OUTPUT:
-![image](https://github.com/DhanushPalani/EX-3-SubQueries-Views-and-Joins/assets/121594640/031553d8-640c-4306-9f12-cd4a6c6a68ed)
+![image](https://github.com/Lakshmipriya2005/DBMS/assets/115525361/db081e71-759d-44df-b847-75294a2e2a34)
 
-### Q9) Perform Natural join on both tables
+
+### Q3) Start the transaction and create a save point A.
 
 ### QUERY:
-![image](https://github.com/DhanushPalani/EX-3-SubQueries-Views-and-Joins/assets/121594640/a9609769-7404-4c74-909b-53d5610ea79a)
+sql
+savepoint A;
 
 
 ### OUTPUT:
-![Screenshot 2023-09-27 093900](https://github.com/Nagul71/EX-3-SubQueries-Views-and-Joins/assets/118661118/099c0b7d-7822-4459-8025-92adc824dda8)
+![image](https://github.com/Lakshmipriya2005/DBMS/assets/115525361/d491985f-d652-4510-baba-69bda39920c4)
 
 
-### Q10) Perform Left and right join on both tables
+### Q4) Perform insertion into employee table.
 
 ### QUERY:
-   ## Left Join
-   ![image](https://github.com/DhanushPalani/EX-3-SubQueries-Views-and-Joins/assets/121594640/7915ee92-d1e0-4528-be68-4bbe6fd7a11c)
+sql
+insert into employee(4,'Robin','EniesLobby');
 
-   ## Right join
-  ![Screenshot 2023-09-27 094432](https://github.com/Nagul71/EX-3-SubQueries-Views-and-Joins/assets/118661118/dcc24099-0fdd-404b-b81d-ea86de5cc8f9)
 
 ### OUTPUT:
-   ## Left Join
-![Screenshot 2023-09-27 094200](https://github.com/Nagul71/EX-3-SubQueries-Views-and-Joins/assets/118661118/bfa8a83b-9e86-4924-895c-05fbe6346506)
+![image](https://github.com/Lakshmipriya2005/DBMS/assets/115525361/b9d81949-f840-4fb4-8427-6c5efb79da74)
 
 
 
-   ## Right Join
- ![Screenshot 2023-09-27 094335](https://github.com/Nagul71/EX-3-SubQueries-Views-and-Joins/assets/118661118/7fe7c05b-ca77-4da2-9ab9-38a5f50a4879)
+### Q6)	Display the employee table and create a save point s2 .
 
 
-### RESULT
-Thus the basics of subqueries,views,joins are performed in SQL.
+### QUERY:
+sql
+select * from employee;
+savepoint s2;
+
+
+### OUTPUT:
+![image](https://github.com/Lakshmipriya2005/DBMS/assets/115525361/bc86bb69-d7ad-4193-aeda-050214882984)
+
+
+
+### Q7)	Perform updation on any one of the row.
+
+
+### QUERY:
+sql
+update employee set emp_name='Nico Robin' where emp_id=4;
+
+
+### OUTPUT:
+![image](https://github.com/Lakshmipriya2005/DBMS/assets/115525361/2e9e6855-56ea-40f4-ba36-56f8eafd68ee)
+
+
+
+### Q8) Display the employee table and rollback to  save point s2 
+
+
+### QUERY:
+sql
+select * from employee;
+rollback to s2;
+
+
+### OUTPUT:
+![image](https://github.com/Lakshmipriya2005/DBMS/assets/115525361/b66b2852-7cbc-49e6-a059-579485f3ff49)
+
+
+### Q9) Display the employee table and commit the changes; 
+
+
+### QUERY:
+sql
+select * from employee;
+commit;
+
+
+### OUTPUT:
+![image](https://github.com/Lakshmipriya2005/DBMS/assets/115525361/7dd55645-f515-4c5b-9174-1b3a9bc24e30)
+
+
+
+### Q10) Rollback to save point s1;
+
+
+### QUERY:
+sql
+rollback to A;
+
+
+### OUTPUT:
+![image](https://github.com/Lakshmipriya2005/DBMS/assets/115525361/441afff5-9f95-418b-ad8b-c2b5cfbf810d)
+
+
+
+### Q11)	Create a new user and grant access to any one database with "insert and update"
+
+
+### QUERY:
+
+
+### OUTPUT:
+
+
+### Q12) Check the user access and display the result 
+
+
+### QUERY:
+
+
+### OUTPUT:
+
+### Q13) Revoke the privillages.
+
+### QUERY:
+
+
+### OUTPUT:
+
+
+## RESULT :
+Thus the basic TCL and DCL commands are executed.
